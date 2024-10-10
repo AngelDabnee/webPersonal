@@ -1,0 +1,34 @@
+{% extends 'core/base.html' %}
+{% block title %}Acerca de Mi | Mi Web Personal{% endblock %}
+
+
+{% block background%}{%load static%}{% static 'core/img/about-bg.jpg' %}{% endblock %}
+{%block headers%}
+<h1>Acerca de</h1>
+<span class="subheading">Biografía</span>
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-3 col-md-4 offset-lg-1">
+        <img class="img-fluid avatar" src="{% static 'core/img/avatar-bg.jpg' %}" alt="">
+    </div>
+    <div class="col-lg-7 col-md-8">
+        <h2 class="section-heading">Angel Dabnee</h2>   
+        <p>Mi objetivo profesional es convertirme en desarrollador Full Stack,
+            utilizando las nuevas tecnologías para el desarrollo de Sistemas, al
+            igual de implementar métodos sobre seguridad de la información en
+            el tráfico de esta.</p>
+            <h2>Formación Académica</h2>
+        <p>Actualmente Tecnologías de la
+            Información Área Desarrollo de
+            Software Multiplataforma en
+            Universidad Tecnológica de
+            Hermosillo<br>
+            Licenciatura en Nutrición
+            Humana en Universidad Estatal
+            de Sonora 2016-2021</p>
+    </div>
+</div>
+{% endblock content%}

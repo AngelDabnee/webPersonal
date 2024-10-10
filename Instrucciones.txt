@@ -1,0 +1,133 @@
+# Instrucciones para configurar el entorno de desarrollo Django
+
+## Descomprimir la carpeta
+
+Descomprime esta carpeta en tu directorio CursoDjango:
+
+- En Windows: `C:\CursoDjango`
+- En Mac OS: `/Users/tu_usuario/Documents/CursoDjango`
+- En Linux: `/home/tu_usuario/CursoDjango`
+
+## Configurar el entorno virtual
+
+1. Instalar pipenv:
+    ```sh
+    pip install pipenv
+    ```
+
+2. Actualizar pip:
+    ```sh
+    python.exe -m pip install --upgrade pip
+    ```
+
+3. Verificar la instalación de pipenv:
+    ```sh
+    pipenv --help
+    ```
+
+4. Listar archivos en el directorio actual (opcional):
+    ```sh
+    ls
+    ```
+
+5. Ver el gráfico de dependencias de pipenv (opcional):
+    ```sh
+    pipenv graph
+    ```
+
+6. Verificar la versión de Python usada por pipenv:
+    ```sh
+    pipenv --py
+    ```
+
+7. Verificar la ubicación del entorno virtual:
+    ```sh
+    pipenv --venv
+    ```
+
+## Instalar dependencias del proyecto
+
+1. Instalar las dependencias del proyecto:
+    ```sh
+    pipenv install
+    ```
+
+2. Listar archivos en el directorio actual (opcional):
+    ```sh
+    ls
+    ```
+
+3. Verificar la ubicación del entorno virtual:
+    ```sh
+    pipenv --venv
+    ```
+
+4. Verificar la versión de Python usada por pipenv:
+    ```sh
+    pipenv --py
+    ```
+
+5. Ejecutar el proyecto usando pipenv:
+    ```sh
+    pipenv run python
+    ```
+
+6. Ver el gráfico de dependencias de pipenv (opcional):
+    ```sh
+    pipenv graph
+    ```
+
+
+## Descripción de comandos
+
+- **pipenv install**: Instala las dependencias y crea automáticamente un entorno virtual (si no existe).
+- **django**: Instala Django, el framework web.
+- **django-ckeditor**: Añade un editor de texto enriquecido CKEditor a los formularios de Django.
+- **Pillow**: Una biblioteca para procesar imágenes en Python (necesaria para trabajar con imágenes en Django).
+- **pylint**: Herramienta para analizar y revisar el código Python.
+- **pylint-django**: Añade configuraciones y reglas de análisis específicas para proyectos Django.
+
+
+
+corrrer, por si no tenemos instalado el env
+pipenv shell
+
+Despues 
+
+python manage.py runserver
+
+Nos pedirá que migremos
+
+py manage.py migrate 
+
+
+Si no funciona el reload, podemos utilizar este comando. 
+pipenv run python manage.py runserver --noreload
+
+Sino funciona tiramos: 
+pipenv install django-livereload-server
+Luego acomodamos: 
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'core',
+    'livereload',  # <- Agregar aquí
+]
+
+Y esto: 
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'livereload.middleware.LiveReloadScript',  # <- Agregar aquí
+]
+
+pipenv run python manage.py runserver
